@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BowlingScore.Core;
+using System;
 
 namespace BowlingScore.UI
 {
@@ -6,7 +7,15 @@ namespace BowlingScore.UI
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!");
+			Console.WriteLine("Enter the Player Name:");
+
+			var playerName = Console.ReadLine();
+
+			var gameManager = new GameManager(playerName);
+
+			gameManager.AddScoreEntryToGame(5);
+
+			Console.ReadLine();
 		}
 	}
 }
