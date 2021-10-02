@@ -80,7 +80,7 @@ namespace BowlingScore.Core
 
 			//go through the frames and calculate each score.
 
-			foreach (var frame in CurrentGame.Frames)
+			foreach (var frame in CurrentGame.Frames.Where(f => f.Deliveries.Count > 0).OrderBy(f => f.FrameNumber))
 			{
 				CalculateFrameScore(frame);
 			}
@@ -88,7 +88,7 @@ namespace BowlingScore.Core
 
 		private void CalculateFrameScore(Frame frame)
 		{
-			if(!frame.IsSpare || !frame.IsStrike)
+			if(!frame.IsSpare && !frame.IsStrike) //Regular Frame, just add the two deliveries together.
 			{
 				frame.FrameScore = frame.Deliveries.Sum(d => d.PinsKnockedDown);
 				return;
@@ -104,7 +104,9 @@ namespace BowlingScore.Core
 						frame.FrameScore = 10 + nextDelivery.PinsKnockedDown;
 				}
 				else
-					throw new NotImplementedException("TODO");
+				{
+					//Doesn't happen since USBC Rule 3a Requires both first and second ball counts be recorded unless a strike is bowled.
+				}
 				
 			}
 
@@ -112,49 +114,42 @@ namespace BowlingScore.Core
 			{
 				//get next two deliveries and add 10 to those scores
 				var nextDelivery = CurrentGame.Frames.FirstOrDefault(f => f.FrameNumber == frame.FrameNumber + 1)?.Deliveries?.FirstOrDefault();
-				if(nextDelivery != null && !nextDelivery.IsStrike)
+				if(nextDelivery != null)
 				{
 					var frameScore = 10 + nextDelivery.PinsKnockedDown;
-					var secondDelivery = CurrentGame.Frames.FirstOrDefault(f => f.FrameNumber == frame.FrameNumber + 1)?.Deliveries?.ElementAt(1);
-					if (secondDelivery != null)
-						frameScore += secondDelivery.PinsKnockedDown;
-					
+					if(nextDelivery.IsStrike)
+					{
+						if(frame.FrameNumber != 10)
+						{
+							var secondDeliveryNextFrame = CurrentGame.Frames.FirstOrDefault(f => f.FrameNumber == frame.FrameNumber + 2)?.Deliveries?.FirstOrDefault();
+							if(secondDeliveryNextFrame != null)
+							{
+								frameScore += secondDeliveryNextFrame.PinsKnockedDown;
+							}
+						}
+						else
+						{
+							var secondDelivery = CurrentGame.Frames.FirstOrDefault(f => f.FrameNumber == frame.FrameNumber + 2)?.Deliveries?.ElementAt(1);
+							if (secondDelivery != null)
+								frameScore += secondDelivery.PinsKnockedDown;
+						}
+						
+					}
+					else
+					{
+						var nextFrameDeliveries = CurrentGame.Frames.FirstOrDefault(f => f.FrameNumber == frame.FrameNumber + 1)?.Deliveries;
+						if(nextFrameDeliveries != null && nextFrameDeliveries.Count > 1)
+							frameScore += nextFrameDeliveries.ElementAt(1).PinsKnockedDown;
+						//var secondDelivery = CurrentGame.Frames.FirstOrDefault(f => f.FrameNumber == frame.FrameNumber + 1)?.Deliveries?.ElementAt(1);
+						//if (secondDelivery != null)
+						//	frameScore += secondDelivery.PinsKnockedDown;
+					}
+
 					frame.FrameScore = frameScore;
 				}
+				
 			}
 		}
-
-		//private void CalculateFrameScore(Frame frame, int maxRecursion)
-		//{
-		//	//if( (frame.IsStrike || frame.IsSpare) && frame.FrameScore == 0)
-		//	//{
-		//	//	var nextFrame = CurrentGame.Frames.FirstOrDefault(f => f.FrameNumber == frame.FrameNumber + 1);
-		//	//	if (nextFrame == null)
-		//	//		return;
-		//	//	CalculateFrameScore(nextFrame);
-		//	//}
-		//	//else
-		//	//{
-		//	//	frame.FrameScore
-		//	//}
-
-		//	var frameScore = frame.Deliveries.Sum(fs => fs.PinsKnockedDown);
-		//	if(!frame.IsStrike || !frame.IsSpare)
-		//	{
-		//		frame.FrameScore = frameScore;
-		//	}
-		//	else if(frame.IsSpare && maxRecursion <= 1) //Is a spare and hasn't been calculated yet.
-		//	{
-		//		var nextFrame = CurrentGame.Frames.FirstOrDefault(f => f.FrameNumber == frame.FrameNumber + 1);
-		//		if(nextFrame != null)
-		//		{
-		//			frame.FrameScore = 10;
-		//			CalculateFrameScore(nextFrame, 1);
-
-		//		}
-		//	}
-		//}
-
 		
 	}
 }

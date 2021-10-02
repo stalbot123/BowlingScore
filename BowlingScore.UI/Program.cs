@@ -15,6 +15,7 @@ namespace BowlingScore.UI
 
 			//Game 1: Strike, Strike, Strike, 7, 2, 8, 2(spare), F, 9, Strike, 7, 3(spare), 9, 0, strike, strike, 8
 			gameManager.AddScoreEntryToGame(10);
+			//gameManager.DisplayCurrentScore();
 			gameManager.AddScoreEntryToGame(10);
 			gameManager.AddScoreEntryToGame(10);
 			gameManager.AddScoreEntryToGame(7);
