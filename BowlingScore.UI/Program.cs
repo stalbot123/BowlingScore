@@ -32,6 +32,7 @@ namespace BowlingScore.UI
 			gameManager.AddScoreEntryToGame(10);
 			gameManager.AddScoreEntryToGame(10);
 			gameManager.AddScoreEntryToGame(8);
+			gameManager.PrintCurrentScore();
 
 
 

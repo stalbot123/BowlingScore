@@ -150,6 +150,16 @@ namespace BowlingScore.Core
 				
 			}
 		}
+
+
+		public void PrintCurrentScore()
+		{
+			foreach (var frame in CurrentGame.Frames)
+			{
+				var result = $"Frame: {frame.FrameNumber} Score: {frame.FrameScore}\tRunning Total Score: {CurrentGame.ScoreRunningTotal}";
+				Console.WriteLine(result);
+			}
+		}
 		
 	}
 }
