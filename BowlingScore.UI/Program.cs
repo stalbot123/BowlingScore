@@ -13,7 +13,26 @@ namespace BowlingScore.UI
 
 			var gameManager = new GameManager(playerName);
 
-			gameManager.AddScoreEntryToGame(5);
+			//Game 1: Strike, Strike, Strike, 7, 2, 8, 2(spare), F, 9, Strike, 7, 3(spare), 9, 0, strike, strike, 8
+			gameManager.AddScoreEntryToGame(10);
+			gameManager.AddScoreEntryToGame(10);
+			gameManager.AddScoreEntryToGame(10);
+			gameManager.AddScoreEntryToGame(7);
+			gameManager.AddScoreEntryToGame(2);
+			gameManager.AddScoreEntryToGame(8);
+			gameManager.AddScoreEntryToGame(2);
+			gameManager.AddScoreEntryToGame(0); //foul
+			gameManager.AddScoreEntryToGame(9);
+			gameManager.AddScoreEntryToGame(10);
+			gameManager.AddScoreEntryToGame(7);
+			gameManager.AddScoreEntryToGame(3);
+			gameManager.AddScoreEntryToGame(9);
+			gameManager.AddScoreEntryToGame(0);
+			gameManager.AddScoreEntryToGame(10);
+			gameManager.AddScoreEntryToGame(10);
+			gameManager.AddScoreEntryToGame(8);
+
+
 
 			Console.ReadLine();
 		}
