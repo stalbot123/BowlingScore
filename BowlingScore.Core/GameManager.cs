@@ -113,7 +113,12 @@ namespace BowlingScore.Core
 			if(frame.IsStrike)
 			{
 				//get next two deliveries and add 10 to those scores
-				var nextDelivery = CurrentGame.Frames.FirstOrDefault(f => f.FrameNumber == frame.FrameNumber + 1)?.Deliveries?.FirstOrDefault();
+				Delivery nextDelivery;
+				if (frame.FrameNumber == 10 && frame.Deliveries.Count > 1)
+					nextDelivery = frame.Deliveries.ElementAt(1);
+				else
+					nextDelivery = CurrentGame.Frames.FirstOrDefault(f => f.FrameNumber == frame.FrameNumber + 1)?.Deliveries?.FirstOrDefault();
+				
 				if(nextDelivery != null)
 				{
 					var frameScore = 10 + nextDelivery.PinsKnockedDown;
@@ -121,15 +126,29 @@ namespace BowlingScore.Core
 					{
 						if(frame.FrameNumber != 10)
 						{
-							var secondDeliveryNextFrame = CurrentGame.Frames.FirstOrDefault(f => f.FrameNumber == frame.FrameNumber + 2)?.Deliveries?.FirstOrDefault();
-							if(secondDeliveryNextFrame != null)
+							if(frame.FrameNumber == 9)
 							{
-								frameScore += secondDeliveryNextFrame.PinsKnockedDown;
+								var secondDeliveryNextFrame = CurrentGame.Frames.FirstOrDefault(f => f.FrameNumber == 10)?.Deliveries?.FirstOrDefault();
+								if (secondDeliveryNextFrame != null)
+									frameScore += secondDeliveryNextFrame.PinsKnockedDown;
 							}
+							else
+							{
+								var secondDeliveryNextFrame = CurrentGame.Frames.FirstOrDefault(f => f.FrameNumber == frame.FrameNumber + 2)?.Deliveries?.FirstOrDefault();
+								if (secondDeliveryNextFrame != null)
+								{
+									frameScore += secondDeliveryNextFrame.PinsKnockedDown;
+								}
+							}
+							
 						}
 						else
 						{
-							var secondDelivery = CurrentGame.Frames.FirstOrDefault(f => f.FrameNumber == frame.FrameNumber + 2)?.Deliveries?.ElementAt(1);
+							//why am I going to the next frame when the frame number is 10?
+							//var secondDelivery = CurrentGame.Frames.FirstOrDefault(f => f.FrameNumber == frame.FrameNumber + 2)?.Deliveries?.ElementAt(1);
+							//if (secondDelivery != null)
+							//	frameScore += secondDelivery.PinsKnockedDown;
+							var secondDelivery = frame.Deliveries.LastOrDefault();
 							if (secondDelivery != null)
 								frameScore += secondDelivery.PinsKnockedDown;
 						}

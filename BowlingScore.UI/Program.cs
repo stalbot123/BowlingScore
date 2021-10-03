@@ -15,7 +15,6 @@ namespace BowlingScore.UI
 
 			//Game 1: Strike, Strike, Strike, 7, 2, 8, 2(spare), F, 9, Strike, 7, 3(spare), 9, 0, strike, strike, 8
 			gameManager.AddScoreEntryToGame(10);
-			//gameManager.DisplayCurrentScore();
 			gameManager.AddScoreEntryToGame(10);
 			gameManager.AddScoreEntryToGame(10);
 			gameManager.AddScoreEntryToGame(7);
@@ -33,6 +32,55 @@ namespace BowlingScore.UI
 			gameManager.AddScoreEntryToGame(10);
 			gameManager.AddScoreEntryToGame(8);
 			gameManager.PrintCurrentScore();
+
+			////Game All Strikes
+			//var gameManager2 = new GameManager(playerName);
+			//gameManager2.AddScoreEntryToGame(10);
+			//gameManager2.AddScoreEntryToGame(10);
+			//gameManager2.AddScoreEntryToGame(10);
+			//gameManager2.AddScoreEntryToGame(10);
+			//gameManager2.AddScoreEntryToGame(10);
+			//gameManager2.AddScoreEntryToGame(10);
+			//gameManager2.AddScoreEntryToGame(10);
+			//gameManager2.AddScoreEntryToGame(10);
+			//gameManager2.AddScoreEntryToGame(10);
+			//gameManager2.AddScoreEntryToGame(10); //10th frame
+			//gameManager2.AddScoreEntryToGame(10);
+			//gameManager2.AddScoreEntryToGame(10);
+			//gameManager2.PrintCurrentScore();
+
+			////Game All Gutters or Fouls
+			var gameManager3 = new GameManager(playerName);
+			gameManager3.AddScoreEntryToGame(0);
+			gameManager3.AddScoreEntryToGame(0);
+
+			gameManager3.AddScoreEntryToGame(0);
+			gameManager3.AddScoreEntryToGame(0);
+
+			gameManager3.AddScoreEntryToGame(0);
+			gameManager3.AddScoreEntryToGame(0);
+
+			gameManager3.AddScoreEntryToGame(0);
+			gameManager3.AddScoreEntryToGame(0);
+
+			gameManager3.AddScoreEntryToGame(0);
+			gameManager3.AddScoreEntryToGame(0); 
+
+			gameManager3.AddScoreEntryToGame(0);
+			gameManager3.AddScoreEntryToGame(0);
+
+			gameManager3.AddScoreEntryToGame(0);
+			gameManager3.AddScoreEntryToGame(0);
+
+			gameManager3.AddScoreEntryToGame(0);
+			gameManager3.AddScoreEntryToGame(0);
+
+			gameManager3.AddScoreEntryToGame(0);
+			gameManager3.AddScoreEntryToGame(0);
+
+			gameManager3.AddScoreEntryToGame(0);
+			gameManager3.AddScoreEntryToGame(0);
+			gameManager3.PrintCurrentScore();
 
 
 
