@@ -19,7 +19,10 @@ namespace BowlingScore.Core
 		public void AddScoreEntryToGame(int pinsKnockedDown, bool isFoul = false)
 		{
 			if (CurrentGame.GameOver)
+			{
+				Console.WriteLine("Game is over. No new scores can be added");
 				return;
+			}
 
 			AddDeliveryToGame(pinsKnockedDown, isFoul);
 			UpdateFrameScores();
@@ -175,7 +178,9 @@ namespace BowlingScore.Core
 		{
 			foreach (var frame in CurrentGame.Frames)
 			{
-				var result = $"Frame: {frame.FrameNumber} Score: {frame.FrameScore}\tRunning Total Score: {CurrentGame.ScoreRunningTotal}";
+				//var result = $"Frame: {frame.FrameNumber} Score: {frame.FrameScore}\tRunning Total Score: {CurrentGame.ScoreRunningTotal}";
+				var runningFrameTotal = CurrentGame.Frames.Where(f => f.FrameNumber <= frame.FrameNumber).Sum(f => f.FrameScore);
+				var result = $"Frame: {frame.FrameNumber}\tFrame Points: {frame.FrameScore}\tActual Score: {runningFrameTotal}";
 				Console.WriteLine(result);
 			}
 		}

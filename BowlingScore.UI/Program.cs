@@ -33,21 +33,21 @@ namespace BowlingScore.UI
 			gameManager.AddScoreEntryToGame(8);
 			gameManager.PrintCurrentScore();
 
-			////Game All Strikes
-			//var gameManager2 = new GameManager(playerName);
-			//gameManager2.AddScoreEntryToGame(10);
-			//gameManager2.AddScoreEntryToGame(10);
-			//gameManager2.AddScoreEntryToGame(10);
-			//gameManager2.AddScoreEntryToGame(10);
-			//gameManager2.AddScoreEntryToGame(10);
-			//gameManager2.AddScoreEntryToGame(10);
-			//gameManager2.AddScoreEntryToGame(10);
-			//gameManager2.AddScoreEntryToGame(10);
-			//gameManager2.AddScoreEntryToGame(10);
-			//gameManager2.AddScoreEntryToGame(10); //10th frame
-			//gameManager2.AddScoreEntryToGame(10);
-			//gameManager2.AddScoreEntryToGame(10);
-			//gameManager2.PrintCurrentScore();
+			//Game All Strikes
+			var gameManager2 = new GameManager(playerName);
+			gameManager2.AddScoreEntryToGame(10);
+			gameManager2.AddScoreEntryToGame(10);
+			gameManager2.AddScoreEntryToGame(10);
+			gameManager2.AddScoreEntryToGame(10);
+			gameManager2.AddScoreEntryToGame(10);
+			gameManager2.AddScoreEntryToGame(10);
+			gameManager2.AddScoreEntryToGame(10);
+			gameManager2.AddScoreEntryToGame(10);
+			gameManager2.AddScoreEntryToGame(10);
+			gameManager2.AddScoreEntryToGame(10); //10th frame
+			gameManager2.AddScoreEntryToGame(10);
+			gameManager2.AddScoreEntryToGame(10);
+			gameManager2.PrintCurrentScore();
 
 			////Game All Gutters or Fouls
 			var gameManager3 = new GameManager(playerName);
@@ -82,7 +82,40 @@ namespace BowlingScore.UI
 			gameManager3.AddScoreEntryToGame(0);
 			gameManager3.PrintCurrentScore();
 
+			var gameManager4 = new GameManager(playerName);
+			gameManager4.AddScoreEntryToGame(5);
+			gameManager4.AddScoreEntryToGame(5);
 
+			gameManager4.AddScoreEntryToGame(4);
+			gameManager4.AddScoreEntryToGame(6);
+
+			gameManager4.AddScoreEntryToGame(3);
+			gameManager4.AddScoreEntryToGame(7);
+
+			gameManager4.AddScoreEntryToGame(2);
+			gameManager4.AddScoreEntryToGame(8);
+
+			gameManager4.AddScoreEntryToGame(1);
+			gameManager4.AddScoreEntryToGame(9);
+
+			gameManager4.AddScoreEntryToGame(6);
+			gameManager4.AddScoreEntryToGame(4);
+
+			gameManager4.AddScoreEntryToGame(7);
+			gameManager4.AddScoreEntryToGame(3);
+
+			gameManager4.AddScoreEntryToGame(8);
+			gameManager4.AddScoreEntryToGame(2);
+
+			gameManager4.AddScoreEntryToGame(9);
+			gameManager4.AddScoreEntryToGame(1);
+
+			gameManager4.AddScoreEntryToGame(5);
+			gameManager4.AddScoreEntryToGame(5);
+			gameManager4.AddScoreEntryToGame(3); //I get entries because it was a spare.
+
+			gameManager4.AddScoreEntryToGame(10);
+			gameManager4.PrintCurrentScore();
 
 			Console.ReadLine();
 		}
