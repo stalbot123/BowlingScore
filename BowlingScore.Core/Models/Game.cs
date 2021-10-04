@@ -14,7 +14,6 @@ namespace BowlingScore.Core.Models
 			this.Frames = new HashSet<Frame>();
 		}
 		public string PlayerName { get; set; }
-		//public Frame[] Frames { get; set; } = new Frame[10];
 		public ICollection<Frame> Frames { get; set; }
 
 		private int scoreRunningTotal;
@@ -28,18 +27,5 @@ namespace BowlingScore.Core.Models
 		}
 
 		public bool GameOver { get; set; }
-
-
-		//private bool gameOver;
-		//public bool GameOver
-		//{
-		//	get
-		//	{
-		//		if(this.Frames.FirstOrDefault(f => f.FrameNumber == 10) != null)
-		//		{
-		//			this.Frames.FirstOrDefault(f => f.FrameNumber == 10).Deliveries
-		//		}
-		//	}
-		//}
 	}
 }

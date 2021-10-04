@@ -24,13 +24,15 @@ namespace BowlingScore.Core
 				return;
 			}
 
-			AddDeliveryToGame(pinsKnockedDown, isFoul);
+			if (isFoul)
+				pinsKnockedDown = 0;
+			AddDeliveryToGame(pinsKnockedDown);
 			UpdateFrameScores();
 		}
 
-		private void AddDeliveryToGame(int pinsKnockedDown, bool isFoul = false)
+		private void AddDeliveryToGame(int pinsKnockedDown)
 		{
-			var newDelivery = new Delivery(pinsKnockedDown, isFoul);
+			var newDelivery = new Delivery(pinsKnockedDown);
 
 			var currentFrame = this.CurrentGame.Frames.OrderBy(f => f.FrameNumber).LastOrDefault();
 			if(currentFrame == null)//first frame, first Delivery

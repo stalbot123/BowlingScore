@@ -8,9 +8,7 @@ namespace BowlingScore.Core.Models
 {
 	public class Delivery
 	{
-		//public bool IsStrike { get; set; }
 		public int PinsKnockedDown { get; set; }
-		public bool IsFoul { get; set; }
 
 		public bool IsStrike
 		{
@@ -20,7 +18,7 @@ namespace BowlingScore.Core.Models
 			}
 		}
 
-		public Delivery(int pinsKnockedDown, bool isFoul)
+		public Delivery(int pinsKnockedDown)
 		{
 			PinsKnockedDown = pinsKnockedDown;
 		}
