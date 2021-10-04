@@ -178,6 +178,7 @@ namespace BowlingScore.Core
 
 		public void PrintCurrentScore()
 		{
+			Console.WriteLine($"Hello {CurrentGame.PlayerName}, here are your scores:");
 			foreach (var frame in CurrentGame.Frames)
 			{
 				//var result = $"Frame: {frame.FrameNumber} Score: {frame.FrameScore}\tRunning Total Score: {CurrentGame.ScoreRunningTotal}";
@@ -185,6 +186,16 @@ namespace BowlingScore.Core
 				var result = $"Frame: {frame.FrameNumber}\tFrame Points: {frame.FrameScore}\tActual Score: {runningFrameTotal}";
 				Console.WriteLine(result);
 			}
+		}
+
+		public bool GameIsOver()
+		{
+			return CurrentGame.GameOver;
+		}
+
+		public int FinalScore()
+		{
+			return CurrentGame.ScoreRunningTotal;
 		}
 		
 	}

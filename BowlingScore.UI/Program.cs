@@ -117,6 +117,30 @@ namespace BowlingScore.UI
 			gameManager4.AddScoreEntryToGame(10);
 			gameManager4.PrintCurrentScore();
 
+
+			/////////
+			var gameManager5 = new GameManager("Tester 1");
+			gameManager5.AddScoreEntryToGame(1);
+			gameManager5.AddScoreEntryToGame(4);
+			gameManager5.AddScoreEntryToGame(4);
+			gameManager5.AddScoreEntryToGame(5);
+			gameManager5.AddScoreEntryToGame(6);
+			gameManager5.AddScoreEntryToGame(4);
+			gameManager5.AddScoreEntryToGame(5);
+			gameManager5.AddScoreEntryToGame(5);
+			gameManager5.AddScoreEntryToGame(10);
+			gameManager5.AddScoreEntryToGame(0);
+			gameManager5.AddScoreEntryToGame(1);
+			gameManager5.AddScoreEntryToGame(7);
+			gameManager5.AddScoreEntryToGame(3);
+			gameManager5.AddScoreEntryToGame(6);
+			gameManager5.AddScoreEntryToGame(4);
+			gameManager5.AddScoreEntryToGame(10);
+			gameManager5.AddScoreEntryToGame(2);
+			gameManager5.AddScoreEntryToGame(8);
+			gameManager5.AddScoreEntryToGame(6);
+			gameManager5.PrintCurrentScore();
+
 			Console.ReadLine();
 		}
 	}
