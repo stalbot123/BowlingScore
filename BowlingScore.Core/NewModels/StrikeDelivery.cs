@@ -9,7 +9,7 @@ namespace BowlingScore.Core.NewModels
 {
 	public class StrikeDelivery : DeliveryBase
 	{
-		public StrikeDelivery(int pinsKnockedDown) : base(pinsKnockedDown)
+		public StrikeDelivery(int deliveryId, int pinsKnockedDown) : base(deliveryId, pinsKnockedDown)
 		{ }
 	}
 }

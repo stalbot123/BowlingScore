@@ -9,11 +9,14 @@ namespace BowlingScore.Core.NewModels
 {
 	public class DeliveryBase : IDeliveryType
 	{
-		public DeliveryBase(int pinsKnockedDown)
+		public DeliveryBase(int deliveryId, int pinsKnockedDown)
 		{
+			this.DeliveryId = deliveryId;
 			this.PinsKnockedDown = pinsKnockedDown;
 		}
 
+		public int DeliveryId { get; set; }
 		public int PinsKnockedDown { get; set; }
+		
 	}
 }

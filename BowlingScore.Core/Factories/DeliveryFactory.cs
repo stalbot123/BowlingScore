@@ -10,14 +10,14 @@ namespace BowlingScore.Core.Factories
 {
 	public static class DeliveryFactory
 	{
-		public static IDeliveryType CreateDeliveryType(int pinsKnockedDown, StandardDelivery previousDelivery = null)
+		public static IDeliveryType CreateDeliveryType(int currentId, int pinsKnockedDown, StandardDelivery previousDelivery = null)
 		{
 			if (pinsKnockedDown == 10)
-				return new StrikeDelivery(10);
+				return new StrikeDelivery(currentId, 10);
 			else if (previousDelivery != null && previousDelivery.PinsKnockedDown + pinsKnockedDown == 10)
-				return new SpareDelivery(pinsKnockedDown);
+				return new SpareDelivery(currentId, pinsKnockedDown);
 			else
-				return new StandardDelivery(pinsKnockedDown);
+				return new StandardDelivery(currentId, pinsKnockedDown);
 
 		}
 	}

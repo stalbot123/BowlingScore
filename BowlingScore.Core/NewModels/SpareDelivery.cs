@@ -9,7 +9,7 @@ namespace BowlingScore.Core.NewModels
 {
 	public class SpareDelivery : DeliveryBase
 	{
-		public SpareDelivery(int pinsKnockedDown):base(pinsKnockedDown)
+		public SpareDelivery(int deliveryId, int pinsKnockedDown):base(deliveryId, pinsKnockedDown)
 		{ }
 	}
 }

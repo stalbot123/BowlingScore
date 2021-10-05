@@ -8,6 +8,7 @@ namespace BowlingScore.Core.Interfaces
 {
 	public interface IDeliveryType
 	{
+		int DeliveryId { get; set; }
 		int PinsKnockedDown { get; set; }
 	}
 }
