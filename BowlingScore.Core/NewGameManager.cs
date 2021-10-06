@@ -28,7 +28,7 @@ namespace BowlingScore.Core
 			AssignDeliveryFrame(latestDelivery);
 		}
 
-		public void GetCurrentScore()
+		public int GetCurrentScore()
 		{
 			ScoreFrames();
 
@@ -38,6 +38,8 @@ namespace BowlingScore.Core
 				runningTotal += frame.FrameScore;
 				Console.WriteLine($"Frame: {frame.FrameNumber}\tFrame Score: {frame.FrameScore}\tCurrent Total:{runningTotal}");
 			}
+
+			return runningTotal;
 		}
 
 		private void AssignDeliveryFrame(IDeliveryType newDelivery)
@@ -58,12 +60,20 @@ namespace BowlingScore.Core
 				}
 				else if(frame.Deliveries.Any(d => d.GetType() == typeof(SpareDelivery)))
 				{
-					var frameScore = 10;
-					var lastDeliveryId = frame.Deliveries.Last().DeliveryId;
-					var nextDelivery = CurrentGame.AllDeliveries.FirstOrDefault(ad => ad.DeliveryId == lastDeliveryId + 1);
-					if(nextDelivery != null)
-						frameScore += nextDelivery.PinsKnockedDown;
-					frame.FrameScore = frameScore;
+					if(frame.FrameNumber == 10)
+					{
+						frame.FrameScore = frame.Deliveries.Sum(d => d.PinsKnockedDown);
+					}
+					else
+					{
+						var frameScore = 10;
+						var lastDeliveryId = frame.Deliveries.Last().DeliveryId;
+						var nextDelivery = CurrentGame.AllDeliveries.FirstOrDefault(ad => ad.DeliveryId == lastDeliveryId + 1);
+						if (nextDelivery != null)
+							frameScore += nextDelivery.PinsKnockedDown;
+						frame.FrameScore = frameScore;
+					}
+					
 				}
 				else if(frame.Deliveries.Any(d => d.GetType() == typeof(StrikeDelivery)))
 				{
